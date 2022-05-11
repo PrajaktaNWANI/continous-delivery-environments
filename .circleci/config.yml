@@ -45,7 +45,7 @@ jobs:
                   name: Preparing environment for testing
                   command: |
                       . venv/bin/activate
-                      scripts/migrate.js $SPACE_ID "CI_$CIRCLE_BRANCH" $MANAGEMENT_API_KEY
+                       scripts/migrate.js $SPACE_ID "CI_$CIRCLE_BRANCH" $MANAGEMENT_API_KEY
 
             # run tests!
             - run:
@@ -63,7 +63,7 @@ jobs:
             - image: circleci/python:3.6.5-node-browsers
         environment:
             # Update HEROKU_APP with your application Name.
-            HEROKU_APP_NAME: "migration-env-demo"
+            #HEROKU_APP_NAME: "migration-env-demo"
         steps:
             - checkout
 
@@ -89,16 +89,16 @@ jobs:
                   command: |
                       scripts/migrate.js $SPACE_ID $CIRCLE_BRANCH $MANAGEMENT_API_KEY
 
-            - run:
-                  name: setup Heroku
-                  command: bash .circleci/setup-heroku.sh
+           # - run:
+            #      name: setup Heroku
+             #     command: bash .circleci/setup-heroku.sh
 
-            - deploy:
-                  name: Deploying to Heroku
-                  command: |
-                      if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "staging" ] || [ "$CIRCLE_BRANCH" == "qa"]; then
-                        git push heroku $CIRCLE_BRANCH
-                      fi
+            #- deploy:
+             #     name: Deploying to Heroku
+              #    command: |
+               #       if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "staging" ] || [ "$CIRCLE_BRANCH" == "qa"]; then
+                #        git push heroku $CIRCLE_BRANCH
+                 #     fi
 
 workflows:
     version: 2
