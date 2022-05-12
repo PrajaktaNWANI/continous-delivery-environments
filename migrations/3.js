@@ -1,9 +1,11 @@
-module.exports = function runMigration(migration) {
-  const post = migration.editContentType("post");
-  post
-    .createField("last_appearance")
-    .name("last_appearance")
-    .type("Symbol")
-    .required(false);
-  return;
-};
+module.exports = function (migration) {
+    migration.transformEntries({
+      contentType: 'recipes',
+      from: ['author'],
+      to: ['author'],
+      transformEntryForLocale: function (fromFields, currentLocale) {
+        const author = 'Stan Lee';
+        return { author: author };
+      },
+    });
+  };
