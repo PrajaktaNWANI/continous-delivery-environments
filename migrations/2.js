@@ -1,5 +1,4 @@
 module.exports = function runMigration(migration) {
-  const post = migration.editContentType("post");
-  post.deleteField("last_appearance");
-  return;
+  const post = migration.editContentType('recipes');
+  post.createField('author').name('author').type('Symbol').required(false);
 };
