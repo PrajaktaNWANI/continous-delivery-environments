@@ -41,6 +41,11 @@
         console.log(`ENVIRONMENT_ID: ${ENVIRONMENT_ID}`);
 
         // ---------------------------------------------------------------------------
+        
+        const CONTENTFUL_PAYLOAD= "{ /payload }"
+        console.log(CONTENTFUL_PAYLOAD);
+        
+        //-----------------------------------------------------------------------------
 
         console.log(`Checking for existing versions of environment: ${ENVIRONMENT_ID}`);
 
